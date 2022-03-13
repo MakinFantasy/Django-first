@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, reverse
 from datetime import datetime, timedelta
 import os
+import pytz
 
 
 def home_view(request):
@@ -27,7 +28,7 @@ def home_view(request):
 def time_view(request):
     # обратите внимание – здесь HTML шаблона нет, 
     # возвращается просто текст
-    current_time = (datetime.utcnow() + timedelta(hours=3)).strftime('%Y-%m-%d %H-%m')
+    current_time = (datetime.now() + timedelta(hours=3)).strftime('%d/%m/%Y %H:%M:%S')
     msg = f'Текущее время: {current_time}'
     return HttpResponse(msg) 
 
